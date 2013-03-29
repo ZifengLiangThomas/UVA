@@ -19,24 +19,26 @@ public class p12405 {
         Scanner sc = new Scanner(System.in);
         int t = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < t; i++) {
-            int no=Integer.parseInt(sc.nextLine());
+            int no = Integer.parseInt(sc.nextLine());
             String input = sc.nextLine();
-            int min = Integer.MAX_VALUE;
-            int count = 0;
-            boolean cons=false;
+            int scarecrows = 0;
+            char p = '#';
             for (int j = 0; j < no; j++) {
-                char ch = input.charAt(j);
-                if (ch == '.') {
-                    count++;
-                    cons=false;
+                char c = input.charAt(j);
+                if (p == '.') {
+                    scarecrows++;
                 }
-                else if(ch=='#' && count<min && !cons){
-                    min=count;
-                    count=0;
-                    cons=true;
+                if (p == '.') {
+                    c = 'S';
+                } else if (p == 'S') {
+                    c = '#';
                 }
+                p = c;
             }
-            System.out.println("Case "+(i+1)+": "+min);
+            if (p == '.') {
+                scarecrows++;
+            }
+            System.out.printf("Case %d: %d\n", i + 1, scarecrows);
         }
     }
 }

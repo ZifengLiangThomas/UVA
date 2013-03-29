@@ -23,16 +23,24 @@ public class Acm11616 {
             this.weigth = weigth;
         }
     };
-
-    public static String roman(long n) {
+    /**
+     * This method convert decimal number to roman.
+     * throws IllegalException if number<=0
+     * @param decimal number.
+     * @return roman digits.
+     */
+    public static String decNumberToRoman(long n) {
 
         if (n <= 0) {
             throw new IllegalArgumentException();
         }
-
+                
         StringBuilder buf = new StringBuilder();
 
         final Numeral[] values = Numeral.values();
+       /**
+        * As roman digits represents maximum from left so loop will start from bigger to smaller
+        */
         for (int i = values.length - 1; i >= 0; i--) {
             while (n >= values[i].weigth) {
                 buf.append(values[i]);
@@ -46,7 +54,7 @@ public class Acm11616 {
         Map<Integer, String> romanMap = new HashMap<Integer, String>();
         Map<String, Integer> arabicMap = new HashMap<String, Integer>();
         for (int i = 1; i < 4000; i++) {
-            String rom = roman(i);
+            String rom = decNumberToRoman(i);
             romanMap.put(i, rom);
             arabicMap.put(rom,i);
         }
